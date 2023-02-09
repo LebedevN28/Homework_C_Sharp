@@ -5,28 +5,24 @@
 // 12821 -> да
 // 23432 -> да
 
-class Program
+Console.Clear();
+
+Console.Write("Введите пятизначное число: ");
+int number = int.Parse(Console.ReadLine()!);
+int originalNumber = number;
+int reverse = 0;
+
+while (number > 0)
 {
-    static void Main(string[] args)
-    {
-        Console.WriteLine(IsPalindrome(14212)); // Нет
-        Console.WriteLine(IsPalindrome(12821)); // Да
-        Console.WriteLine(IsPalindrome(23432)); // Да
-    }
-
-    static bool IsPalindrome(int num)
-    {
-        string numString = num.ToString();
-        int length = numString.Length;
-
-        for (int i = 0; i < length / 2; i++)
-        {
-            if (numString[i] != numString[length - i - 1])
-            {
-                return false;
-            }
-        }
-
-        return true;
-    }
+    int lastDigit = number % 10;
+    reverse = (reverse * 10) + lastDigit;
+    number = number / 10;
+}
+if (originalNumber == reverse)
+{
+    Console.WriteLine($"да"!);
+}
+else
+{
+    Console.WriteLine($"нет"!);
 }
